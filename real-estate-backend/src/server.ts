@@ -1,11 +1,12 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
+import path from "path";
 import { sequelize } from "./config/database";
 import authRoutes from "./routes/authRoutes";
 import protectedRoutes from "./routes/protectedRoutes"; 
 
-dotenv.config();
+dotenv.config({ path: path.resolve(__dirname, '../.env') });
 
 const app = express();
 const PORT = process.env.PORT || 5000;

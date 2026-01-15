@@ -1,14 +1,11 @@
 import { Sequelize } from "sequelize-typescript";
 import { User } from "../models/User";
 import dotenv from "dotenv";
+import path from "path";
 
-dotenv.config();
+dotenv.config({ path: path.resolve(__dirname, '../../.env') });
 
-export const sequelize = new Sequelize({
-  database: "real_estate_db", // اسم قاعدة البيانات
-  username: "postgres",       
-  password: "1572001",  // كلمة المرور الخاصة بك
-  host: "127.0.0.1",
+export const sequelize = new Sequelize(process.env.DATABASE_URL!, {
   dialect: "postgres",
   models: [User],
 });
